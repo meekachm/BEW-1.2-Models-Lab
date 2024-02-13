@@ -62,10 +62,10 @@ class User(db.Model):
     favorite_books = db.relationship('Book', secondary='book_user', backref='users')
 
     def __str__(self):
-        return f'<Genre: {self.username}>'
+        return f'<User: {self.username}>'
 
     def __repr__(self):
-        return f'<Genre: {self.username}>'
+        return f'<User: {self.username}>'
 
 book_genre_table = db.Table('book_genre',
     db.Column('book_id', db.Integer, db.ForeignKey('book.id')),
@@ -73,7 +73,7 @@ book_genre_table = db.Table('book_genre',
 )
 
 # Table to represent the many-to-many relationship between books and users
-favorite_book_table = db.Table('favorite_book',
+favorite_book_table = db.Table('book_user',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
 )
